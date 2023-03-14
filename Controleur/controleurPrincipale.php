@@ -3,7 +3,7 @@
 function controleurPrincipal($action) {
     $lesActions = array();
     $lesActions["stock"] = "stock.php";
-    $lesActions["defaut"] = "";
+    $lesActions["defaut"] = "client.php";
     
 
     if (array_key_exists($action, $lesActions)) {

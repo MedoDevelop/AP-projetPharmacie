@@ -2,7 +2,8 @@
 
 function controleurPrincipal($action) {
     $lesActions = array();
-    $lesActions["defaut"] =;
+    $lesActions["stock"] = "stock.php";
+    $lesActions["defaut"] = "";
     
 
     if (array_key_exists($action, $lesActions)) {

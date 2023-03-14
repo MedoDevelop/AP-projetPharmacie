@@ -2,7 +2,7 @@
 
 function controleurPrincipal($action) {
     $lesActions = array();
-    $lesActions["defaut"] =;
+    $lesActions["defaut"] = "client.php";
     
 
     if (array_key_exists($action, $lesActions)) {

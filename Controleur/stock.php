@@ -1,5 +1,5 @@
 <?php
-    if(!isset($_SESSION)){
-        
-    }
+    
+    include_once "vue/gestionStock.php";
+
 ?>

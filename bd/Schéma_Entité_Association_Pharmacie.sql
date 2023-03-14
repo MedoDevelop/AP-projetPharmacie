@@ -2,29 +2,29 @@ CREATE DATABASE IF NOT EXISTS pharmacie;
 USE pharmacie;
 
 CREATE TABLE MUTUELLE(
-   idMutuelle VARCHAR(50) ,
+   idMutuelle INT NOT NULL AUTO_INCREMENT ,
    nom VARCHAR(50) ,
    mail VARCHAR(50) ,
    tel VARCHAR(50) ,
    PRIMARY KEY(idMutuelle)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE MEDECIN(
-   idMedecin VARCHAR(50) ,
+   idMedecin INT NOT NULL AUTO_INCREMENT ,
    nom VARCHAR(50) ,
    prenom VARCHAR(50) ,
    tel VARCHAR(50) ,
    PRIMARY KEY(idMedecin)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE FORME(
-   idForme VARCHAR(50) ,
+   idForme INT NOT NULL AUTO_INCREMENT ,
    libelle VARCHAR(50) ,
    PRIMARY KEY(idForme)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE CLIENT(
-   idClient VARCHAR(50) ,
+   idClient INT NOT NULL AUTO_INCREMENT ,
    numeroSecurite INT NOT NULL,
    nom VARCHAR(50) ,
    prenom VARCHAR(50) ,
@@ -34,54 +34,54 @@ CREATE TABLE CLIENT(
    adresseVille VARCHAR(50) ,
    adresseCP INT,
    dateNaissance DATE,
-   idMutuelle VARCHAR(50)  NOT NULL,
+   idMutuelle INT NOT NULL,
    PRIMARY KEY(idClient),
    FOREIGN KEY(idMutuelle) REFERENCES MUTUELLE(idMutuelle)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE ORDONNANCE(
-   idOrdo VARCHAR(50) ,
+   idOrdo INT NOT NULL AUTO_INCREMENT ,
    numMois INT,
    libPathologie VARCHAR(50) ,
    duree DECIMAL(15,2)  ,
    active BOOLEAN,
    dateEmission DATE,
-   idClient VARCHAR(50)  NOT NULL,
-   idMedecin VARCHAR(50)  NOT NULL,
+   idClient INT  NOT NULL,
+   idMedecin INT  NOT NULL,
    PRIMARY KEY(idOrdo, numMois),
    FOREIGN KEY(idClient) REFERENCES CLIENT(idClient),
    FOREIGN KEY(idMedecin) REFERENCES MEDECIN(idMedecin)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE POSOLOGIE(
-   idPoso VARCHAR(50) ,
+   idPoso INT NOT NULL AUTO_INCREMENT ,
    libelle VARCHAR(50) ,
    quantiteJour INT,
-   idForme VARCHAR(50)  NOT NULL,
+   idForme INT NOT NULL,
    PRIMARY KEY(idPoso),
    FOREIGN KEY(idForme) REFERENCES FORME(idForme)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE MEDICAMENT(
-   idPoso VARCHAR(50) ,
-   idMedoc VARCHAR(50) ,
+   idPoso INT NOT NULL AUTO_INCREMENT ,
+   idMedoc INT ,
    libelle VARCHAR(50) ,
    stock INT,
    PRIMARY KEY(idPoso, idMedoc),
    FOREIGN KEY(idPoso) REFERENCES POSOLOGIE(idPoso)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE AVOIR(
-   idOrdo VARCHAR(50) ,
+   idOrdo INT NOT NULL AUTO_INCREMENT ,
    numMois INT,
-   idPoso VARCHAR(50) ,
-   idMedoc VARCHAR(50) ,
+   idPoso INT ,
+   idMedoc INT ,
    nbrBoites INT,
    remis BOOLEAN,
    PRIMARY KEY(idOrdo, numMois, idPoso, idMedoc),
    FOREIGN KEY(idOrdo, numMois) REFERENCES ORDONNANCE(idOrdo, numMois),
    FOREIGN KEY(idPoso, idMedoc) REFERENCES MEDICAMENT(idPoso, idMedoc)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO FORME VALUES ('1','Comprimés'),('2','Gélule'),('3','Effervescent');
 

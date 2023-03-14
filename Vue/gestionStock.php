@@ -1,7 +1,7 @@
 
 <body>
     <section id="GestionStock">
-        <h1> Gestion des stocks </h1>
+        <h1> Gestion des stocks </h1> <!-- Centrer -->
         <table>
             <tr>
                 <th> Libelle </th>
@@ -10,7 +10,7 @@
             </tr>
             <?php
                 foreach($allMedicament){
-                    
+
                 }
             ?>
         </table>

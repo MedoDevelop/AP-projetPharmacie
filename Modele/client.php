@@ -21,9 +21,4 @@ function addClient($numSecu,$nom,$prenom,$mail,$tel,$adrRue,$adrVille,$adrCp,$da
     $req->execute();
 }
 
-
-
-
-
-
 ?>

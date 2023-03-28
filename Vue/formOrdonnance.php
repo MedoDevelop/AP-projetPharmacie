@@ -26,7 +26,12 @@
 					<div class="field">
 					  <label class="label">Client</label>
 					  <div class="control">
-					    <input class="input" type="text" style="width:406px;margin-left:10px;">
+					    <div class="select">
+					      <select>
+					        <option>Select dropdown</option>
+					        <option>With options</option>
+					      </select>
+					    </div>
 					  </div>
 					</div>
 

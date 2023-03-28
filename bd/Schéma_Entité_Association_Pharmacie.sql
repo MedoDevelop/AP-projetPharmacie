@@ -2,30 +2,33 @@ CREATE DATABASE IF NOT EXISTS pharmacie;
 USE pharmacie;
 
 CREATE TABLE MUTUELLE(
-   idMutuelle INT,
+   idMutuelle INT NOT NULL AUTO_INCREMENT ,
    nom VARCHAR(50) ,
+   mail VARCHAR(50) ,
+   tel VARCHAR(50) ,
    PRIMARY KEY(idMutuelle)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE MEDECIN(
-   idMedecin INT,
+   idMedecin INT NOT NULL AUTO_INCREMENT ,
    nom VARCHAR(50) ,
    prenom VARCHAR(50) ,
    tel VARCHAR(50) ,
    PRIMARY KEY(idMedecin)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE FORME(
-   idForme INT,
+   idForme INT NOT NULL AUTO_INCREMENT ,
    libelle VARCHAR(300) ,
    PRIMARY KEY(idForme)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE CLIENT(
-   idClient INT,
+   idClient INT NOT NULL AUTO_INCREMENT ,
    numeroSecurite INT NOT NULL,
    nom VARCHAR(50) ,
    prenom VARCHAR(50) ,
+   mail VARCHAR(50) ,
    tel VARCHAR(50) ,
    adresseRue VARCHAR(50) ,
    adresseVille VARCHAR(50) ,
@@ -34,39 +37,43 @@ CREATE TABLE CLIENT(
    idMutuelle INT NOT NULL,
    PRIMARY KEY(idClient),
    FOREIGN KEY(idMutuelle) REFERENCES MUTUELLE(idMutuelle)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE ORDONNANCE(
-   idOrdo INT,
+   idOrdo INT NOT NULL AUTO_INCREMENT ,
    numMois INT,
    libPathologie VARCHAR(50) ,
    duree DECIMAL(15,2)  ,
    active BOOLEAN,
    dateEmission DATE,
-   idClient INT NOT NULL,
-   idMedecin INT NOT NULL,
+   idClient INT  NOT NULL,
+   idMedecin INT  NOT NULL,
    PRIMARY KEY(idOrdo, numMois),
    FOREIGN KEY(idClient) REFERENCES CLIENT(idClient),
    FOREIGN KEY(idMedecin) REFERENCES MEDECIN(idMedecin)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE MEDICAMENT(
-   idMedoc INT,
+   idForme INT,
+   idMedoc INT  NOT NULL AUTO_INCREMENT,
    libelle VARCHAR(50) ,
-   qteStock INT,
-   idForme INT NOT NULL,
+   stock INT,
    PRIMARY KEY(idMedoc),
    FOREIGN KEY(idForme) REFERENCES FORME(idForme)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE AVOIR(
-   idOrdo INT,
+   idOrdo INT NOT NULL AUTO_INCREMENT ,
    numMois INT,
-   idMedoc INT,
+   idPoso INT ,
+   idMedoc INT ,
    nbrBoites INT,
    remis BOOLEAN,
-   quantitePar24h INT,
    PRIMARY KEY(idOrdo, numMois, idMedoc),
    FOREIGN KEY(idOrdo, numMois) REFERENCES ORDONNANCE(idOrdo, numMois),
    FOREIGN KEY(idMedoc) REFERENCES MEDICAMENT(idMedoc)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO MUTUELLE VALUES ('1','MGPA','mgpa@mgpa.com','+596596393344'),('2','MAAF','maaf@maaf.com','+596596560934');

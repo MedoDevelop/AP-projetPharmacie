@@ -12,6 +12,7 @@
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+<<<<<<< HEAD
     function getNewIDPosologie(){
         $db = connexionPDO();
         $req = "SELECT MAX(idPoso) FROM posologie";
@@ -87,4 +88,33 @@
         $res = $db->query($req);
         return $res->fetchAll(PDO::FETCH_ASSOC);
     }
+=======
+    function addMedicament($numSecu,$nom,$prenom,$mail,$tel,$adrRue,$adrVille,$adrCp,$dateNaiss,$mutuelle){
+    
+    $db = connexionPDO();
+
+    $req=$db->prepare('INSERT INTO CLIENT (numeroSecurite,nom,prenom,mail,tel,adresseRue,adresseVille,adresseCP,dateNaissance,idMutuelle) VALUES (:numSecu,:nom,:prenom,:mail,:tel,:adrRue,:adrVille,:adrCp,:dateNaiss,:mutuelle)');
+
+    $req->bindValue(":numSecu",$numSecu,PDO::PARAM_INT);
+    $req->bindValue(":nom",$nom,PDO::PARAM_STR);
+    $req->bindValue(":prenom",$prenom,PDO::PARAM_STR);
+    $req->bindValue(":mail",$mail,PDO::PARAM_STR);
+    $req->bindValue(":tel",$tel,PDO::PARAM_STR);
+    $req->bindValue(":adrRue",$adrRue,PDO::PARAM_STR);
+    $req->bindValue(":adrVille",$adrVille,PDO::PARAM_STR);
+    $req->bindValue(":adrCp",$adrCp,PDO::PARAM_INT);
+    $req->bindValue(":dateNaiss",$dateNaiss,PDO::PARAM_STR);
+    $req->bindValue(":mutuelle",$mutuelle,PDO::PARAM_STR);
+
+    $req->execute();
+}
+?>
+
+
+
+
+
+
+
+>>>>>>> c367cc9793fa7d8f5611273bcbc2fadf0024654f
 ?>

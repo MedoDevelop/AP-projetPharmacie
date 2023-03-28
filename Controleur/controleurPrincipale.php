@@ -2,12 +2,11 @@
 
 function controleurPrincipal($action) {
     $lesActions = array();
-<<<<<<< HEAD
-    $lesActions["defaut"] =;
-=======
+
+    $lesActions["defaut"] ="accueil.php";
+    $lesActions["accueil"] = "accueil.php";
     $lesActions["stock"] = "stock.php";
-    $lesActions["defaut"] = "client.php";
->>>>>>> d5007fdb8d81a22a800d81e1ec359dbc7af9e7bb
+     $lesActions["ajoutOrdonnance"] = "ajoutOrdonnance.php";
     
 
     if (array_key_exists($action, $lesActions)) {

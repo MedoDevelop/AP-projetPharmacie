@@ -1,5 +1,5 @@
 <?php
-include_once "../Modele/bd.inc.php";
+include_once "bd.inc.php";
 
 function addClient($numSecu,$nom,$prenom,$mail,$tel,$adrRue,$adrVille,$adrCp,$dateNaiss,$mutuelle){
 	

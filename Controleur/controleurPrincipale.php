@@ -9,6 +9,7 @@ function controleurPrincipal($action) {
     $lesActions["accueil"] = "accueil.php";
     $lesActions["stock"] = "stock.php";
     $lesActions["ajoutOrdonnance"] = "ajoutOrdonnance.php";
+    $lesActions["ajoutClient"] = "ajoutClient.php";
     $lesActions["graf"] = "graf.php";
     $lesActions["medocSolicite"] = "medocSolicite.php";
     $lesActions["defaut"] ="accueil.php";
@@ -19,5 +20,49 @@ function controleurPrincipal($action) {
         return $lesActions["defaut"];
     }
 }
+
+//Fonction API
+    function sendDelete($url){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        return $response;
+    }
+
+
+    function sendPUT($url,$data){
+        //$data = array('key' => 'value');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        return $response;
+    }
+
+    function sendGET($url){
+        $response = file_get_contents($url);
+        echo $response;
+    }
+
+    function sendPOST($url,$data){
+        //$data = array('key' => 'value');
+        $options = array(
+        CURLOPT_URL => $url,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => http_build_query($data),
+        CURLOPT_RETURNTRANSFER => true
+        );
+        $curl = curl_init();
+        curl_setopt_array($curl, $options);
+        echo $response;
+        curl_close($curl);
+        return $response;
+    }
 
 ?>

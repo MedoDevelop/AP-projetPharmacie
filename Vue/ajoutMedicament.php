@@ -5,7 +5,7 @@
             <p><label for="nbPerDay">Nombre de prise par 24h</label><input id="nbPerDay" name="nbPerDay" type="number" required/></p>
             <p>
                 <label for="forme">Type de principe actif</label>
-
+                
                 <select name="forme" id="forme">
                 <?php
                     foreach($allForme as $forme){

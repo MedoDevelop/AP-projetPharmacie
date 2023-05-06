@@ -27,7 +27,7 @@ CREATE TABLE CLIENT(
    idClient INT NOT NULL AUTO_INCREMENT ,
    numeroSecurite INT NOT NULL,
    nom VARCHAR(50) ,
-   prenom VARCHAR(50) ,
+   prenom    VARCHAR(50) ,
    mail VARCHAR(50) ,
    tel VARCHAR(50) ,
    adresseRue VARCHAR(50) ,
@@ -57,7 +57,7 @@ CREATE TABLE ORDONNANCE(
 CREATE TABLE MEDICAMENT(
    idForme INT,
    idMedoc INT  NOT NULL AUTO_INCREMENT,
-   libelle VARCHAR(50) ,
+   libelle VARCHAR(300) ,
    stock INT,
    PRIMARY KEY(idMedoc),
    FOREIGN KEY(idForme) REFERENCES FORME(idForme)
@@ -66,7 +66,6 @@ CREATE TABLE MEDICAMENT(
 CREATE TABLE AVOIR(
    idOrdo INT NOT NULL AUTO_INCREMENT ,
    numMois INT,
-   idPoso INT ,
    idMedoc INT ,
    nbrBoites INT,
    remis BOOLEAN,

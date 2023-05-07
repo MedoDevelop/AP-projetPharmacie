@@ -6,25 +6,25 @@
 <div class="columns is-mobile">
   <div class="column is-three-fifths is-offset-one-fifth">
     <div class="box">
-      <h4 class="title is-4">Mutuelle n°<?php echo $mutuelle['idMutuelle'];?></h4>
+      <h4 class="title is-4">Mutuelle N°<?php echo $mutuelle['idMutuelle'];?></h4>
         <form action="" method="POST" id="formMutuelle">
 
             <div class="field">
                <label class="label">Nom</label>
                <p class="control">
-                  <input class="input" type="text" id="nom"  value="<?php echo $mutuelle['nom'];?>" style="width:200px;margin-left:0px;">
+                  <input class="input" type="text" id="nom" name="nom" value="<?php echo $mutuelle['nom'];?>" style="width:200px;margin-left:0px;">
               </p>
             </div>
             <div class="field">
                <label class="label">Mail</label>
               <p class="control">
-                <input class="input" type="email" id="email" value="<?php echo $mutuelle['mail'];?>" style="width:200px;margin-left:0px;">
+                <input class="input" type="email" id="email" name="email" value="<?php echo $mutuelle['mail'];?>" style="width:200px;margin-left:0px;">
               </p>
             </div>
             <div class="field">
                <label class="label">Téléphone</label>
               <p class="control">
-               <input class="input" type="text" id="tel" value="<?php echo $mutuelle['tel'];?>" style="width:200px;margin-left:0px;"> 
+               <input class="input" type="text" id="tel" name="tel" value="<?php echo $mutuelle['tel'];?>" style="width:200px;margin-left:0px;"> 
               </p>
             </div>
             <div class="field has-addons has-addons-centered">

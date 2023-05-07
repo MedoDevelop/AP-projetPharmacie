@@ -11,29 +11,29 @@
 
   					<div class="field is-grouped">
   						 <p class="control">
-						    <b>Numéro de sécurité sociale</b> <input class="input" type="number" id="numSecu">
+						    <b>Numéro de sécurité sociale</b> <input class="input" type="number" id="numSecu" name="numSecu">
 						  </p>
 						</div>
 						<div class="field is-grouped">
 						  <p class="control">
-						    <b>Nom</b> <input class="input" type="text" id="nom">
+						    <b>Nom</b> <input class="input" type="text" id="nom" name="nom">
 						  </p>
 						  <p class="control">
-						   <b>Prénom</b><input class="input" type="text" id="prenom"> 
+						   <b>Prénom</b><input class="input" type="text" id="prenom" name="prenom"> 
 						  </p>
 						</div>
 						 <div class="field">
 						 	<label class="label">Date de naissance</label>
 						  <p class="control">
-						    <input class="input" type="date" id="dateNaiss" style="width:150px;margin-left:0px;">
+						    <input class="input" type="date" id="dateNaiss" name="dateNaiss" style="width:150px;margin-left:0px;">
 						  </p>
 						</div>
 					<div class="field is-grouped">
 					  <p class="control">
-					    <b>Mail</b><input class="input" type="email" id="email">
+					    <b>Mail</b><input class="input" type="email" name="email" id="email">
 					  </p>
 					  <p class="control">
-					    <b>Téléphone</b><input class="input" type="text" id="tel">
+					    <b>Téléphone</b><input class="input" type="text" name="tel" id="tel">
 					  </p>
 					</div>
 
@@ -48,7 +48,7 @@
 					<div class="field">
 						  <p class="control">
 						    <span class="select">
-						      <select id="selectMutuelle">
+						      <select id="selectMutuelle" name="laMutuelle">
 						      	<?php
 						      	
 						      	foreach($mutuelle as $uneMutuelle){
@@ -62,13 +62,13 @@
 						</div>
 					<div class="field is-grouped">
 					  <p class="control">
-					    <b>Rue</b><input class="input" type="text">
+					    <b>Rue</b><input class="input" type="text" name="rue">
 					  </p>
 					  <p class="control">
-					    <b>Ville</b><input class="input" type="text">
+					    <b>Ville</b><input class="input" type="text" name="ville">
 					  </p>
 					  <p class="control">
-					    <b>Code Postal</b><input class="input" type="number">
+					    <b>Code Postal</b><input class="input" type="number" name="cp">
 					  </p>
 					</div>
 					<div class="control">

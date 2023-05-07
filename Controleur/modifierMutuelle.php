@@ -9,5 +9,9 @@ if($_COOKIE['mutuelle']!=""){
 }
 include_once("./Vue/footer.html");
 
+if(isset($_POST['valider'])){
+	$_POST['']=;
+}
+
 
 ?>

@@ -12,19 +12,19 @@
   					<div class="field">
   						 <label class="label">Nom</label>
   						 <p class="control">
-						  		<input class="input" type="number" id="nom" style="width:150px;margin-left:0px;">
+						  		<input class="input" type="text" id="nom" style="width:200px;margin-left:0px;">
 						  </p>
 						</div>
 						<div class="field">
 							 <label class="label">Mail</label>
 						  <p class="control">
-						    <input class="input" type="email" id="email" style="width:150px;margin-left:0px;">
+						    <input class="input" type="email" id="email" style="width:200px;margin-left:0px;">
 						  </p>
 						</div>
 						<div class="field">
 							 <label class="label">Téléphone</label>
 						  <p class="control">
-						   <input class="input" type="text" id="tel" style="width:150px;margin-left:0px;"> 
+						   <input class="input" type="text" id="tel" style="width:200px;margin-left:0px;"> 
 						  </p>
 						</div>
 						<div class="field has-addons has-addons-centered">

@@ -14,6 +14,14 @@ function GetAllMutuelle(){
             return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function GetMutuelleById($id){
+            $db = connexionPDO();
+            $query = $db->prepare("SELECT * FROM mutuelle WHERE idMutuelle= :id;");
+            $query->bindValue(":id",$id,PDO::PARAM_INT);
+            $query->execute();
+            return $query->fetch(PDO::FETCH_ASSOC);
+}
+
 function GetMutuelleLike($nom){
             $db = connexionPDO();
             $req = "SELECT * FROM mutuelle

@@ -14,13 +14,14 @@ function initMedoc(){
   	{
 		$data=fgetcsv($file);//Ligne du fichier
 		if(!empty($data)){
-			if(!in_array($data[1], $add)){//data n'est pas liste noir -> ajout du data
+			$nomMed=explode(",",$data[1]);
+			if(!in_array($nomMed[0], $add)){//le médicament n'est pas liste noir -> ajout du médicament
 	  			if(!empty($data[1])){ //data n'est pas vide
 	  			//print_r(selectIdForme($data[2]));
-	  				addMedicament(selectIdForme($data[2])[0],$data[1]);
+	  				addMedicament(selectIdForme($data[2])[0],$nomMed[0]);
 	  			}
 	  		}
-	  		array_push($add, $data[1]);//data est ajouter a la liste "noir"
+	  		array_push($add, $nomMed[0]);//data est ajouter a la liste "noir"
 		}
   		
   	}

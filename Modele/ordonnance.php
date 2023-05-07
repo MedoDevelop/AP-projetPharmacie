@@ -1,6 +1,12 @@
 <?php
 include_once "../Modele/bd.inc.php";
 
+function GetAllOrdonnance(){
+    $db = connexionPDO();
+    $query = $db->query("SELECT * FROM ordonnance");
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function addOrdo($numMois,$libPatho,$duree,$active,$dateEmission,$idCli,$idMed){
 	
 	$db = connexionPDO();

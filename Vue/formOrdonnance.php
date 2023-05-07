@@ -6,6 +6,7 @@
 <div class="columns is-mobile">
   <div class="column is-three-fifths is-offset-one-fifth">
 		<div class="box">
+			<h4 class="title is-4">Nouvelle ordonnance</h4>
   			<form action="" method="POST" id="formOrdonnance">
   					
   					<div class="field">
@@ -36,7 +37,7 @@
 						   	<b>Client</b>
 						  </p>
 						  <p class="control">
-						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Client inexistant ? cliquez ici</a>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="?action=ajoutClient">Client inexistant ? cliquez ici</a>
 						  </p>
 					</div>
 					<div class="field has-addons">
@@ -91,6 +92,9 @@
 					    <input class="input" type="number" style="width:175px;margin-left:10px;">
 					  </div>
 					</div>
+					<div class="control">
+				  <input class="button is-primary" type="submit" name="valider" value="Valider"/>
+				</div>
   			</form>
 		</div>
 	</div>

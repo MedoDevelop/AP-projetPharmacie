@@ -6,7 +6,7 @@
                 FROM medicament med
                 JOIN avoir av ON med.idMedoc=av.idMedoc
                 JOIN ordonnance ordo ON ordo.idOrdo=av.idOrdo AND ordo.numMois=av.numMois
-                WHERE DATE_FORMAT(ordo.dateEmission,'%Y-%m') >= DATE_FORMAT(NOW(),'%Y-%m')
+                WHERE DATE_FORMAT(ordo.dateDebut,'%Y-%m') >= DATE_FORMAT(NOW(),'%Y-%m')
                 AND ordo.active=1  
                 AND av.remis=0
                 AND med.idMedoc=?
@@ -54,7 +54,7 @@
         $besoinFinal = 0;
         $manquantActuel = 0;
         if($stockActu < $besoinActu){
-            $ManquantActuel = $besoinActu-$stockActu;
+            $manquantActuel = $besoinActu-$stockActu;
         }
         
         $evolStock = array();

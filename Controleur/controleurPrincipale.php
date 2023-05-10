@@ -11,6 +11,8 @@ function controleurPrincipal($action) {
     $lesActions["ajoutOrdonnance"] = "ajoutOrdonnance.php";
     $lesActions["ajoutClient"] = "ajoutClient.php";
     $lesActions["graf"] = "graf.php";
+    $lesActions["addStock"] = "addStock.php";
+    $lesActions["reduceStock"] = "reduceStock.php";
     $lesActions["medocSolicite"] = "medocSolicite.php";
     $lesActions["defaut"] ="accueil.php";
 
@@ -60,9 +62,9 @@ function controleurPrincipal($action) {
         );
         $curl = curl_init();
         curl_setopt_array($curl, $options);
-        echo $response;
+        //echo $response;
+        $response = curl_exec($curl);
         curl_close($curl);
         return $response;
     }
-
 ?>

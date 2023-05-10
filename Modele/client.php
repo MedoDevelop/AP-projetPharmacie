@@ -1,6 +1,12 @@
 <?php
 include_once "bd.inc.php";
 
+function GetAllClient(){
+    $db = connexionPDO();
+    $query = $db->query("SELECT * FROM client");
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function addClient($numSecu,$nom,$prenom,$mail,$tel,$adrRue,$adrVille,$adrCp,$dateNaiss,$mutuelle){
 	
 	$db = connexionPDO();

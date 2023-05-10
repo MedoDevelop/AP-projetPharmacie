@@ -10,6 +10,9 @@ function controleurPrincipal($action) {
     $lesActions["stock"] = "stock.php";
     $lesActions["ajoutOrdonnance"] = "ajoutOrdonnance.php";
     $lesActions["ajoutClient"] = "ajoutClient.php";
+    $lesActions["consulMutuelle"] = "consulMutuelle.php";
+    $lesActions["modifierMutuelle"] = "modifierMutuelle.php";
+    $lesActions["ajoutMutuelle"] = "ajoutMutuelle.php";
     $lesActions["graf"] = "graf.php";
     $lesActions["addStock"] = "addStock.php";
     $lesActions["reduceStock"] = "reduceStock.php";
@@ -45,11 +48,6 @@ function controleurPrincipal($action) {
         $response = curl_exec($ch);
         curl_close($ch);
         return $response;
-    }
-
-    function sendGET($url){
-        $response = file_get_contents($url);
-        echo $response;
     }
 
     function sendPOST($url,$data){

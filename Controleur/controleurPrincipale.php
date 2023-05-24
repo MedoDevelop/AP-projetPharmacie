@@ -61,7 +61,7 @@ function controleurPrincipal($action) {
         CURLOPT_RETURNTRANSFER => true
         );
         curl_setopt_array($curl, $options);
-<<<<<<< HEAD
+
         $response = curl_exec($curl);
         echo $response;
         curl_close($curl);
@@ -72,11 +72,5 @@ function controleurPrincipal($action) {
         $response = file_get_contents($url);
         return json_decode($response);
     }
-=======
-        //echo $response;
-        $response = curl_exec($curl);
-        curl_close($curl);
-        return $response;
-    }
->>>>>>> 2444b113593b9f923d844a7ec5c118096737b291
+
 ?>

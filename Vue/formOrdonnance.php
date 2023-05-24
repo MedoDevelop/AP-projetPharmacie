@@ -9,7 +9,16 @@
 		<div class="box">
 			<h4 class="title is-4">Nouvelle ordonnance</h4>
   			<form action="" method="POST" id="formOrdonnance">
-  					
+  				
+						  <p style="margin-left:833px;">
+						   	<b>Date d'émission</b>
+						  </p>
+					
+  					<div class="field has-addons has-addons-right">
+						  <p class="control">
+						    <input class="input" type="date" id="dateEmission" name="dateEmission" style="width:256px;margin-left:0px;">
+						  </p>
+						</div>
   					<div class="field">
 						  <p class="control">
 						   	<b>Médecin</b>

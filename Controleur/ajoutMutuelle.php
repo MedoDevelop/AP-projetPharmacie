@@ -15,8 +15,8 @@ if(isset($_POST['valider'])){
 	$data['mail']=$mail;
 	$data['tel']=$tel;
 
-	print_r($data);
-	
+	//print_r($data);
+
 	sendPost('http://api.test/mutuelle/create',$data);
 	//CreateMutuelle($nom,$mail,$tel);
 	

@@ -82,19 +82,5 @@ function getNbRows(){
 	var table=document.getElementById('tableOrdonnance');
 	var nbr=table.rows.length;
 	document.cookie="lignesMedoc="+(nbr-1)+"";
+	alert(nbr)
 }
-/*<div class="field has-addons">
-						  <p class="control">
-						    <input class="input" type="text" id="medoc1" onkeyup="alimenteSelectStock('selectMedoc1','medoc1')">
-						  </p>
-						  <p class="control">
-						    <span class="select">
-						      <select id="selectMedoc1" name="leMedoc1">
-						      </select>
-						    </span>
-						  </p>
-						</div>
-					    </td>
-					    <td>
-					     	<input class="input" type="number" name="nombre1">
-					    </td>*/

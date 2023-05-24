@@ -2,7 +2,7 @@
 include_once("./Modele/mutuelle.php");
 include_once("./Vue/header.html");
 
-if($_COOKIE['mutuelle']!=""){
+if(isset($_COOKIE['mutuelle'])){
 	$mutuelle=getMutuelleById($_COOKIE['mutuelle']);
 	include_once("./Vue/modifierMutuelle.php");
 }else{
@@ -16,6 +16,8 @@ if(isset($_POST['valider'])){
 	$tel=$_POST['tel'];
 
 	updateMutuelle($mutuelle['idMutuelle'],$nom,$mail,$tel);
+
+	
 }
 
 

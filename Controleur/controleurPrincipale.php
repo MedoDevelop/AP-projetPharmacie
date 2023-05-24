@@ -12,6 +12,7 @@ function controleurPrincipal($action) {
     $lesActions["ajoutClient"] = "ajoutClient.php";
     $lesActions["consulMutuelle"] = "consulMutuelle.php";
     $lesActions["modifierMutuelle"] = "modifierMutuelle.php";
+    $lesActions["supprimerMutuelle"] = "supprimerMutuelle.php";
     $lesActions["ajoutMutuelle"] = "ajoutMutuelle.php";
     $lesActions["graf"] = "graf.php";
     $lesActions["medocSolicite"] = "medocSolicite.php";
@@ -50,17 +51,22 @@ function controleurPrincipal($action) {
 
     function sendPOST($url,$data){
         //$data = array('key' => 'value');
+        $curl = curl_init();
         $options = array(
         CURLOPT_URL => $url,
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => http_build_query($data),
         CURLOPT_RETURNTRANSFER => true
         );
-        $curl = curl_init();
         curl_setopt_array($curl, $options);
+        $response = curl_exec($curl);
         echo $response;
         curl_close($curl);
         return $response;
     }
 
+    function sendGET($url){
+        $response = file_get_contents($url);
+        return json_decode($response);
+    }
 ?>

@@ -34,7 +34,7 @@ function GetMutuelleLike($nom){
 
 function CreateMutuelle($nom,$mail,$tel){
             $db = connexionPDO();
-            $req = "INSERT INTO mutuelle
+            $req = "INSERT INTO mutuelle(nom,mail,tel)
                     VALUES (?,?,?);";
             $query = $db->prepare($req);
             $query->execute([$nom,$mail,$tel]);

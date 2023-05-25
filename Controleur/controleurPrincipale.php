@@ -65,4 +65,6 @@ function controleurPrincipal($action) {
         curl_close($curl);
         return $response;
     }
+
+
 ?>

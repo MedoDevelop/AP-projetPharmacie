@@ -1,7 +1,6 @@
 <?php
 
-$medocJson = file_get_contents("http://api.test/stock/allinordo");
-$medoc = json_decode($medocJson,true);
+$medoc = sendGET("http://api.test/stock/allinordo");
 //echo $medocJson;
 
 $page = 1;

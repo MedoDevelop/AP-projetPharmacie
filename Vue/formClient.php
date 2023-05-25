@@ -42,7 +42,7 @@
 						   	<b>Mutuelle</b>
 						  </p>
 						  <p class="control">
-						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Mutuelle inexistante ? cliquez ici</a>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="?action=ajoutMutuelle">Mutuelle inexistante ? cliquez ici</a>
 						  </p>
 					</div>
 					<div class="field">

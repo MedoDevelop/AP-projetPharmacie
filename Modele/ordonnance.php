@@ -1,5 +1,5 @@
 <?php
-include_once "../Modele/bd.inc.php";
+include_once "bd.inc.php";
 
 function GetAllOrdonnance(){
     $db = connexionPDO();
@@ -23,6 +23,14 @@ function addOrdo($numMois,$libPatho,$duree,$active,$dateEmission,$idCli,$idMed){
 
 
     $req->execute();
+}
+
+function setDateDebut($val)
+{
+	$db = connexionPDO();
+    $query = $db->prepare("SELECT DATE_FORMAT(DATE_ADD(NOW(), INTERVAL ? MONTH), '%Y-%m-%d');");
+    $query->execute([$val]);
+    return $query->fetch(PDO::FETCH_BOTH);//index nombre et noms associatifs
 }
 
 

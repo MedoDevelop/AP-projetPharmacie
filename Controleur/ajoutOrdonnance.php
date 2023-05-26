@@ -1,5 +1,6 @@
 <?php
 include_once("./Modele/medecin.php");
+include_once("./Modele/ordonnance.php");
 include_once("./Vue/header.html");
 include_once("./Vue/formOrdonnance.php");
 include_once("./Vue/footer.html");
@@ -22,7 +23,10 @@ if(isset($_POST['valider'])){
 
 		$data2['idOrdo']=$data['idOrdo'];
 
-		for ($i=1;$i<=$renouvellement;$i++) { 
+		for ($i=1;$i<=$renouvellement;$i++) {
+			$dateDebut=setDateDebut($i-1);
+			print_r($dateDebut);
+			$data['dateDebut']=$dateDebut[0];
 			$data['numMois']=$i;
 			sendPost('http://api.test/ordonnance/create',$data);
 		}

@@ -3,7 +3,6 @@
 <body>
 <div class="columns is-mobile">
   <div class="column is-three-fifths is-offset-one-fifth">
-  <div class="box">
   	
 
     <!--Modal pour confirmation de suppression-->
@@ -24,7 +23,6 @@
            &nbsp;&nbsp;&nbsp;&nbsp;<button class="button is-primary" onclick="closeModal()">Annuler</button>
           </footer>
       </div>
-</div>
 </div>
 </div>
 </div>

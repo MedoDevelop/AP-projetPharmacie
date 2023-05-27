@@ -15,6 +15,7 @@ function controleurPrincipal($action) {
     $lesActions["supprimerMutuelle"] = "supprimerMutuelle.php";
     $lesActions["ajoutMutuelle"] = "ajoutMutuelle.php";
     $lesActions["graf"] = "graf.php";
+    $lesActions["editOrdo"] = "editOrdo.php";
     $lesActions["addStock"] = "addStock.php";
     $lesActions["reduceStock"] = "reduceStock.php";
     $lesActions["medocSolicite"] = "medocSolicite.php";

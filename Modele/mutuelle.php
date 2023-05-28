@@ -14,12 +14,13 @@ function GetAllMutuelle(){
             return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function GetMutuelleById($id){
+function verifyAssociationWithClient($id){
             $db = connexionPDO();
-            $query = $db->prepare("SELECT * FROM mutuelle WHERE idMutuelle= :id;");
+            $query = $db->prepare("SELECT * FROM client WHERE idMutuelle= :id;");
             $query->bindValue(":id",$id,PDO::PARAM_INT);
             $query->execute();
-            return $query->fetch(PDO::FETCH_ASSOC);
+            $count=$query->rowCount();
+            return $count;
 }
 
 function GetMutuelleLike($nom){

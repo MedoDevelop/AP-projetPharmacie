@@ -1,6 +1,6 @@
 <?php
 include_once("./Modele/mutuelle.php");
-$mutuelle=getAllMutuelle();
+$mutuelles=sendGet('http://api.test/mutuelle/all');
 
 include_once("./Vue/header.html");
 include_once("./Vue/formClient.php");
@@ -13,7 +13,7 @@ if(isset($_POST['valider'])){
 	$dateNaiss=$_POST['dateNaiss'];
 	$email=$_POST['email'];
 	$tel=$_POST['tel'];
-	$mutuelle=$_POST['laMutuelle'];
+	$mutuelle=$_POST['mutuelle'];
 	$rue=$_POST['rue'];
 	$ville=$_POST['ville'];
 	$cp=$_POST['cp'];
@@ -29,8 +29,6 @@ if(isset($_POST['valider'])){
 	$data['cp']=$cp;
 	$data['dateNaiss']=$dateNaiss;
 	$data['idMutuelle']=$mutuelle;
-
-	//print_r($data);
 
 	sendPOST('http://api.test/client/add',$data);
 }

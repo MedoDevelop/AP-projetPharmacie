@@ -27,4 +27,13 @@ function addClient($numSecu,$nom,$prenom,$mail,$tel,$adrRue,$adrVille,$adrCp,$da
     $req->execute();
 }
 
+function verifyAssociationWithOrdo($id){
+            $db = connexionPDO();
+            $query = $db->prepare("SELECT * FROM ordonnance WHERE idClient= :id;");
+            $query->bindValue(":id",$id,PDO::PARAM_INT);
+            $query->execute();
+            $count=$query->rowCount();
+            return $count;
+}
+
 ?>

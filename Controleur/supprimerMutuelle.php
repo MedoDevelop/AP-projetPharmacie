@@ -11,6 +11,7 @@ include_once("./Vue/supprimerMutuelle.php");
 
 if(isset($_POST['supprimer'])){
 	sendDelete('http://api.test/mutuelle/delete/'.$_COOKIE['mutuelle']);
+	header("Location: ?action=consulMutuelle");
 }
 
 ?>

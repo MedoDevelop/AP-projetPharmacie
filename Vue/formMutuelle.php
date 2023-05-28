@@ -1,7 +1,4 @@
-<script type="text/javascript" src="./Javascript/api.js"></script>
-<?php
-//$_COOKIE['lancerRecherche']=false;
-?>
+<script type="text/javascript" src="./Javascript/mutuelle2.js"></script>
 <body>
 <div class="columns is-mobile">
   <div class="column is-three-fifths is-offset-one-fifth">
@@ -12,26 +9,29 @@
   					<div class="field">
   						 <label class="label">Nom</label>
   						 <p class="control">
-						  		<input class="input" type="text" id="nom" name="nom" style="width:200px;margin-left:0px;">
+						  		<input class="input" type="text" id="nom" name="nom" style="width:300px;margin-left:0px;">
 						  </p>
 						</div>
 						<div class="field">
 							 <label class="label">Mail</label>
 						  <p class="control">
-						    <input class="input" type="email" id="email"  name="email" style="width:200px;margin-left:0px;">
+						    <input class="input" type="email" id="email"  name="email" style="width:300px;margin-left:0px;">
 						  </p>
 						</div>
 						<div class="field">
 							 <label class="label">Téléphone</label>
 						  <p class="control">
-						   <input class="input" type="text" id="tel" name="tel"style="width:200px;margin-left:0px;"> 
+						   <input class="input" type="text" id="tel" name="tel"style="width:300px;margin-left:0px;"> 
 						  </p>
 						</div>
 						<div class="field has-addons has-addons-centered">
 							<div class="control">
-				  			<input class="button is-primary" type="submit" name="valider" value="Valider"/>
+				  			<input class="button is-primary" type="submit" name="valider" value="Valider" onclick="verifySubmit('La mutuelle a bien été enregistrée')">
+							</div>
 						</div>
-					</div>
+						<div class="field">
+							<p id="message"></p>
+						</div>
   			</form>
 		</div>
 	</div>

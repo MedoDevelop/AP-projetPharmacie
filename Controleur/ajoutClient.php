@@ -31,6 +31,8 @@ if(isset($_POST['valider'])){
 	$data['idMutuelle']=$mutuelle;
 
 	sendPOST('http://api.test/client/add',$data);
+
+	echo('<p class="subtitle is-4" align="center" style="color : green"><b>Le client a été enregistré avec succès, pour voir les changements <a href="?action=consulClient">cliquez ici</a></b></p>');
 }
 
 ?>

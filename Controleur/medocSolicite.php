@@ -2,9 +2,9 @@
 
 
 //$medocJson = file_get_contents("http://api.test/stock/allinordo");
-$medocJson = file_get_contents("http://api.test/avoir/all");
-$medoc = json_decode($medocJson,true);
-$medoc = sendGET("http://api.test/stock/allinordo");
+/*$medocJson = file_get_contents("http://api.test/avoir/all");
+$medoc = json_decode($medocJson,true);*/
+$medoc = sendGETAssoc("http://api.test/stock/allinordo");
 
 //echo $medocJson;
 

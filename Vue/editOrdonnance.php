@@ -1,5 +1,20 @@
-<script type="text/javascript" src="./Javascript/api.js"></script>
-<script type="text/javascript" src="./Javascript/ordonnance.js"></script>
+<?php
+	function genLinetableMedoc($libMedoc,$nbBoite){
+		$res = "
+			<tr>
+			<td>
+				<input class=\"input\" style=\"width:400px\" type=\"text\" id=\"medoc1\" value=\"$libMedoc\" disabled>
+			</td>
+			<td>
+				<input class=\"input\" type=\"number\" name=\"nombre1\" min=\"0\" value=\"$nbBoite\" disabled>
+			</td>
+			</tr>
+		";
+		return $res;
+	}
+?>
+
+<script type="text/javascript" src="./Javascript/ordonnanceEdit.js"></script>
 <?php
 //$_COOKIE['lancerRecherche']=false;
 ?>
@@ -7,16 +22,16 @@
 <div class="columns is-mobile">
   <div class="column is-three-fifths is-offset-one-fifth">
 		<div class="box">
-			<h4 class="title is-4">Modification ordonnance, !id ordonnance!, !pathologie!, !nom client!, !prenom client!</h4>
-  			<form action="" method="POST" id="formOrdonnance">
+			<h4 class="title is-4">Edition de l'ordonnance: <?= $ordo[0]['idOrdo'].'; Pathologie: '.$ordo[0]['libPathologie'].'; client: '.$client[0]['nom'].' '.$client[0]['prenom'] ?></h4>
+
   				
-						  <p style="margin-left:833px;">
+						  <p style="margin-left:70%;">
 						   	<b>Date d'émission</b>
 						  </p>
 					
   					<div class="field has-addons has-addons-right">
 						  <p class="control">
-						    <input class="input" type="date" id="dateEmission" name="dateEmission" style="width:256px;margin-left:0px;" disabled>
+						    <input class="input" type="date" id="dateEmission" name="dateEmission" style="width:256px;margin-left:0px;" value="<?= $ordo[0]["dateEmission"] ?>" disabled>
 						  </p>
 						</div>
   					<div class="field">
@@ -26,64 +41,48 @@
 						  <div>
 						 <div class="field has-addons">
 						  <p class="control">
-						    <input class="input" type="text" id="medecin" onkeyup="alimenteSelectMedecin('selectMedecin','medecin')" value="le medecin">
-						  </p>
-						  <p class="control">
-						    <span class="select">
-						      <select id="selectMedecin" name="leMedecin" value="id medecin">
-						      </select>
-						    </span>
+						    <input class="input" type="text" id="medecin" onkeyup="alimenteSelectMedecin('selectMedecin','medecin')" value="<?= $medecin[0]['nom'].' '.$medecin[0]['prenom'] ?>" disabled>
 						  </p>
 						</div>
-					<div class="field">
-					  <label class="label">Pathologie</label>
+					<label class="label">Pathologie</label>
+
+					<form action="index.php?action=modifPathologie&ordonnance=<?= $idOrdo ?>" method="post">
+					<div class="field has-addons">
 					  <div class="control">
-					    <input class="input" type="text" name="pathologie" value="lib pahthologie">
+					    <input class="input" type="text" name="libPathologie" value="<?= $ordo[0]['libPathologie'] ?>">
+					  	</div>
+						<div class="control">
+					    <input type="submit" class="button is-primary" name="Modifier" value="Modifier">
+						</div>
+					
+					</div>
+					</form>
+					<br/>
+					<div class="field">
+					  <label class="label">Durer de renouvellement (en mois)</label>
+					  <div class="control">
+					    <input class="input" type="number" name="renouvellement" min="0" max="12" value="6" style="width:175px;margin-left:10px;" disabled>
 					  </div>
 					</div>
+
 					<table class="table" id="tableOrdonnance">
 					 <thead>
 					    <tr>
 					      <th><abbr>Médicament</abbr></th>
 					      <th><abbr>Nombre de boîtes</abbr></th>
-					      <th><a onclick="addRow()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABu0lEQVR4nO2WuUpDQRSGvyLaGDS22qoJWLgkvobLs6jR3qUVQ0pjfAcrjRF8CbfKrVVwS6oYOfAHBtS75V5UyA8HBu5/ljvnzPwDPfwzZIE14AS4AN5ktq4BRWAiicQFoA60A5oVmI8jcR9QBj4U+BHYA+a1GwMyWy8AFXHa8ikBqajJh4FTBXsHNoDBAH7G2QQazm5kovx5XQEe1IKwmAJuFOMM6A/jXJbjHTBCdJjvvWLtBnUqqH+27TN0j1m1o6W1L+qq2HoeF7YU046qJ7LOtAcZuM6x88MQ8CTuuBdxXSQ7asRYgGFf3FUvUk2khQQKWBL32It0LdJYAgV02nvpRXoVKe2T0M++Q1rfLMePeEmwgEF9e/Yq4EqkiQRakBPXlPNXh/DIi1QUqZJAAQfiLv/piwjJZ1uSGhe2g2x/B3mJUSOoeAQQt6bEaDqoU0kVm5SOdpF81JHjnTCOKacV9iCZi5Dc/vbWUcHQT7OMU0RDkmrD5Ich9bzp3P2hn2QdpPSSaSmYTXIVWNTFkpbldM6rzrS3tO2RH6UuJoHDEFdxLaYB/oJx6fmxrtRX2bmO2EoIJe3hb+AT+Ly4iyA1K5MAAAAASUVORK5CYII=">
-					    </a>
+					      </a>
 					    </th>
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	<tr>
-					  	<td>
-					  		<div class="field has-addons">
-						  <p class="control">
-						    <input class="input" type="text" id="medoc1" onkeyup="alimenteSelectStock('selectMedoc1','medoc1')">
-						  </p>
-						  <p class="control">
-						    <span class="select">
-						      <select id="selectMedoc1" name="leMedoc1">
-						      </select>
-						    </span>
-						  </p>
-						</div>
-					    </td>
-					    <td>
-					     	<input class="input" type="number" name="nombre1" min="0">
-					    </td>
-					    <td>
-					    </td>
-					    </tr>
+					  	<?php
+							foreach ($medocs as $medoc) {
+								echo genLinetableMedoc($medoc['libMedoc'],$medoc['nbrBoites']);
+							}
+						?>
 					  </tbody>
 					  </table>
-
-
-					<div class="field">
-					  <label class="label">Renouvellement (en mois)</label>
-					  <div class="control">
-					    <input class="input" type="number" name="renouvellement" min="0" max="12" value="6" style="width:175px;margin-left:10px;">
-					  </div>
-					</div>
 					<div class="control">
-				  <button class="button is-primary" name="valider" onclick="getNbRows()">Valider</button>
 				</div>
   			</form>
 		</div>

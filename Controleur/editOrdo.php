@@ -12,16 +12,20 @@
     //info client, info medecin, lib pathologie, nombre de mois, liste des medicament et leur quantité.
 
     //l'ordonnance
-    $ordo = sendGET("http://api.test/ordonnance/byid/$idOrdo");//sendGET("http://api.test/ordonance/medocofordo/$idOrdo");
+    $ordo = sendGETAssoc("http://api.test/ordonnance/byid/$idOrdo");//sendGET("http://api.test/ordonance/medocofordo/$idOrdo");
     
     //Le client de l'ordonnance
-    $idClient = $ordo["idClient"];
-    $client = sendGET("http://api.test/client/byid/$idClient");
+    $idClient = $ordo[0]["idClient"];
+    $client = sendGETAssoc("http://api.test/client/byid/$idClient");
 
     //Le medecin
-    $idMedecin = $ordo["idMedecin"];
-    $medecin = sendGET("http://api.test/medecin/byid/$idMedecin");
+    $idMedecin = $ordo[0]["idMedecin"];
+    $medecin = sendGETAssoc("http://api.test/medecin/byid/$idMedecin");
 
+    $medocs = sendGETAssoc("http://api.test/ordonnance/medocofordomonth/$idOrdo/1");
+
+    include_once 'Vue/header.html';
     include_once 'Vue/editOrdonnance.php';
+    include_once 'Vue/footer.html';
 
 ?>

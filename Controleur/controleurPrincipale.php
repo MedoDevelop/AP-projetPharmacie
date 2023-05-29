@@ -15,12 +15,15 @@ function controleurPrincipal($action) {
     $lesActions["supprimerMutuelle"] = "supprimerMutuelle.php";
     $lesActions["ajoutMutuelle"] = "ajoutMutuelle.php";
     $lesActions["graf"] = "graf.php";
+    $lesActions["consultOrdo"] = "consultOrdo.php";
+    $lesActions["deleteOrdo"] = "deleteOrdo.php";
+    $lesActions["modifPathologie"] = "modifiePahtologie.php";
+    $lesActions["consultOrdo"] = "consultOrdo.php";
     $lesActions["editOrdo"] = "editOrdo.php";
     $lesActions["addStock"] = "addStock.php";
     $lesActions["reduceStock"] = "reduceStock.php";
     $lesActions["medocSolicite"] = "medocSolicite.php";
     $lesActions["defaut"] ="accueil.php";
-
     if (array_key_exists($action, $lesActions)) {
         return $lesActions[$action];
     } else {
@@ -72,6 +75,11 @@ function controleurPrincipal($action) {
     function sendGET($url){
         $response = file_get_contents($url);
         return json_decode($response);
+    }
+
+    function sendGETAssoc($url){
+        $response = file_get_contents($url);
+        return json_decode($response,true);
     }
 
 ?>

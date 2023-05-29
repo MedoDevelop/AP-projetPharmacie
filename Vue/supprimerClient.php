@@ -1,4 +1,4 @@
-<script type="text/javascript" src="./Javascript/mutuelle2.js"></script>
+<script type="text/javascript" src="./Javascript/client.js"></script>
 
 <body>
 <div class="columns is-mobile">
@@ -10,11 +10,11 @@
       <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title">Suppression de la mutuelle</p>
+            <p class="modal-card-title">Suppression du client</p>
             <button class="delete" aria-label="close" onclick="closeModal()"></button>
           </header>
           <section class="modal-card-body">
-            Êtes-vous sûr de vouloir supprimer cette mutuelle ?
+            Êtes-vous sûr de vouloir supprimer ce client ?
           </section>
           <footer class="modal-card-foot">
             <form action="" method="POST" name="supression" id="suppression">

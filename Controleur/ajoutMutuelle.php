@@ -1,9 +1,9 @@
+
 <?php
 include_once("./Modele/mutuelle.php");
 
 include_once("./Vue/header.html");
 include_once("./Vue/formMutuelle.php");
-include_once("./Vue/footer.html");
 
 if(isset($_POST['valider'])){
 	$nom=$_POST['nom'];
@@ -18,8 +18,8 @@ if(isset($_POST['valider'])){
 	//print_r($data);
 
 	sendPost('http://api.test/mutuelle/create',$data);
-	//CreateMutuelle($nom,$mail,$tel);
+	echo('<p class="subtitle is-4" align="center" style="color : green"><b>La mutuelle a été enregistrée avec succès, pour voir les changements <a href="?action=consulMutuelle">cliquez ici</a></b></p>');
 	
 }
-
+include_once("./Vue/footer.html");
 ?>

@@ -41,11 +41,11 @@ inputMedoc.setAttribute('type','text');
 var fonctionSearch="alimenteSelectStock('"+idSelect+"','"+idInputMedoc+"')";
 inputMedoc.setAttribute('onkeyup',fonctionSearch)
 
-
 var nameNombre="nombre"+nbr+"";
 inputNombre.setAttribute('class','input');
 inputNombre.setAttribute('type','number');
 inputNombre.setAttribute('name',nameNombre);
+inputNombre.setAttribute('id',nameNombre);
 inputNombre.setAttribute('min','0');
 
 
@@ -82,5 +82,58 @@ function getNbRows(){
 	var table=document.getElementById('tableOrdonnance');
 	var nbr=table.rows.length;
 	document.cookie="lignesMedoc="+(nbr-1)+"";
-	alert(nbr)
+
+	verifySubmit();
 }
+
+ function verifySubmit(){
+
+ 	var form=document.getElementById('formOrdonnance');
+
+ 	var message=document.getElementById("message");
+
+ 	var table=document.getElementById('tableOrdonnance');
+	var nbr=table.rows.length-1;
+
+ 	var dateEm=document.getElementById('dateEmission');
+ 	var medecin=document.getElementById('selectMedecin');
+ 	var path=document.getElementById('pathologie');
+ 	var client=document.getElementById('selectClient'); 	
+ 	var renouv=document.getElementById('renouvellement');
+
+
+   	form.addEventListener("submit", function(e){
+   	for(var i=1;i<=nbr;i++){
+	    if(dateEm.value=="" || medecin.value=="" || path.value=="" || client.value=="" || renouv.value=="" || eval('selectMedoc'+i).value=="" || eval('nombre'+i).value==""){//fonction eval : concaténation pour le nom de variable
+	    	e.preventDefault();
+	    	message.setAttribute("style","color:red;");
+	    	message.innerHTML="Tous les champs ne sont pas correctement remplis";
+
+	    	if(dateEm.value==""){
+	    		dateEm.setAttribute("style","border: 1px solid red;");
+	    	}
+	    	if(medecin.value==""){
+	    		medecin.setAttribute("style","border: 1px solid red;");
+	    	}
+	    	if(path.value==""){
+	    		path.setAttribute("style","border: 1px solid red;");
+	    	}
+	    	if(client.value==""){
+	    		client.setAttribute("style","border: 1px solid red;");
+	    	}
+	    	if(renouv.value==""){
+	    		renouv.setAttribute("style","border: 1px solid red;");
+	    	}
+	    	if(eval('nombre'+i).value==""){
+	    		eval('nombre'+i).setAttribute("style","border: 1px solid red;");
+	    	}
+	    	if(eval('selectMedoc'+i).value==""){
+	    		eval('selectMedoc'+i).setAttribute("style","border: 1px solid red;");
+	    	}
+	    	
+
+	    }
+	}
+	});
+
+ }

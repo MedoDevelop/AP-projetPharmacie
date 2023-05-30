@@ -13,7 +13,6 @@
 						  <p style="margin-left:833px;">
 						   	<b>Date d'émission</b>
 						  </p>
-					
   					<div class="field has-addons has-addons-right">
 						  <p class="control">
 						    <input class="input" type="date" id="dateEmission" name="dateEmission" style="width:256px;margin-left:0px;">
@@ -38,7 +37,7 @@
 					<div class="field">
 					  <label class="label">Pathologie</label>
 					  <div class="control">
-					    <input class="input" type="text" name="pathologie">
+					    <input class="input" type="text" name="pathologie" id="pathologie">
 					  </div>
 					</div>
 
@@ -88,7 +87,7 @@
 						</div>
 					    </td>
 					    <td>
-					     	<input class="input" type="number" name="nombre1" min="0">
+					     	<input class="input" type="number" id="nombre1" name="nombre1" min="0">
 					    </td>
 					    <td>
 					    </td>
@@ -100,12 +99,15 @@
 					<div class="field">
 					  <label class="label">Renouvellement (en mois)</label>
 					  <div class="control">
-					    <input class="input" type="number" name="renouvellement" min="0" max="12" style="width:175px;margin-left:10px;">
+					    <input class="input" type="number" name="renouvellement" id="renouvellement" min="0" max="12" style="width:175px;margin-left:10px;">
 					  </div>
 					</div>
 					<div class="control">
 				  <button class="button is-primary" name="valider" onclick="getNbRows()">Valider</button>
 				</div>
+				<div class="field">
+							<p id="message"></p>
+						</div>
   			</form>
 		</div>
 	</div>

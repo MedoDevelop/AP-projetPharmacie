@@ -22,8 +22,15 @@
     $idMedecin = $ordo[0]["idMedecin"];
     $medecin = sendGETAssoc("http://api.test/medecin/byid/$idMedecin");
 
-    $medocs = sendGETAssoc("http://api.test/ordonnance/medocofordomonth/$idOrdo/1");
-
+    $medocs = sendGETAssoc("http://api.test/ordonnance/medocofordomonth/$idOrdo");
+    $nbMedoc = 0; //designe le nombre de medicament nn remis
+    $numMois = $medocs[0]['numMois'];
+    foreach($medocs as $medoc){
+        if($medoc['remis'] == 0){
+            $nbMedoc = $nbMedoc + 1;
+        }    
+    }
+    
     include_once 'Vue/header.html';
     include_once 'Vue/editOrdonnance.php';
     include_once 'Vue/footer.html';

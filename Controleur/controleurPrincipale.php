@@ -18,6 +18,7 @@ function controleurPrincipal($action) {
     $lesActions["supprimerMutuelle"] = "supprimerMutuelle.php";
     $lesActions["ajoutMutuelle"] = "ajoutMutuelle.php";
     $lesActions["graf"] = "graf.php";
+    $lesActions["valideMedoc"] = "valideMedoc.php";
     $lesActions["consultOrdo"] = "consultOrdo.php";
     $lesActions["deleteOrdo"] = "deleteOrdo.php";
     $lesActions["modifPathologie"] = "modifiePahtologie.php";
@@ -83,6 +84,10 @@ function controleurPrincipal($action) {
     function sendGETAssoc($url){
         $response = file_get_contents($url);
         return json_decode($response,true);
+    }
+
+    function verifVar($var){//simplication de -- if(isset($var) && !empty($var))
+        return isset($var) && !empty($var);
     }
 
 ?>

@@ -1,6 +1,9 @@
 <?php
-	function genLinetableMedoc($libMedoc,$nbBoite){
-		$res = "
+	$cptMedoc = 0; //nbMedoc designe uniquement les medicament qui n'ont pas été remis pas tous
+	function genLinetableMedoc($libMedoc,$nbBoite,$estRemis,$idMedoc){
+		global $cptMedoc;
+		if($estRemis == 1){
+			$res = "
 			<tr>
 			<td>
 				<input class=\"input\" style=\"width:400px\" type=\"text\" id=\"medoc1\" value=\"$libMedoc\" disabled>
@@ -8,8 +11,33 @@
 			<td>
 				<input class=\"input\" type=\"number\" name=\"nombre1\" min=\"0\" value=\"$nbBoite\" disabled>
 			</td>
+			<td>
+				<center>
+				<input class\"checkbox\" type=\"checkbox\" checked disabled/>
+				</center>
+			</td>
 			</tr>
 		";
+		}else{
+			$res = "
+			<tr>
+			<td>
+				<input class=\"input\" style=\"width:400px\" type=\"text\" id=\"medoc1\" value=\"$libMedoc\" disabled/>
+				<input type=\"hidden\" name=\"medoc$cptMedoc\" value=$idMedoc/>
+			</td>
+			<td>
+				<input class=\"input\" type=\"number\" name=\"nombre1\" min=\"0\" value=\"$nbBoite\" disabled/>
+			</td>
+			<td>
+				<center>
+				<input class\"checkbox\" name=\"check$cptMedoc\" type=\"checkbox\"/>
+				</center>
+			</td>
+			</tr>
+		";
+			$cptMedoc = $cptMedoc + 1;
+		}
+		
 		return $res;
 	}
 ?>
@@ -64,12 +92,16 @@
 					    <input class="input" type="number" name="renouvellement" min="0" max="12" value="6" style="width:175px;margin-left:10px;" disabled>
 					  </div>
 					</div>
-
+					<form action="index.php?action=valideMedoc" method="post">
+					<input type="hidden" name="nbMedoc" value="<?= $nbMedoc ?>"/>
+					<input type="hidden" name="idOrdo" value="<?= $idOrdo ?>"/>
+					<input type="hidden" name="numMois" value="<?= $numMois ?>"/>
 					<table class="table" id="tableOrdonnance">
 					 <thead>
 					    <tr>
 					      <th><abbr>Médicament</abbr></th>
 					      <th><abbr>Nombre de boîtes</abbr></th>
+							<th><abbr>Remis O/N</abbr></th>
 					      </a>
 					    </th>
 					    </tr>
@@ -77,11 +109,14 @@
 					  <tbody>
 					  	<?php
 							foreach ($medocs as $medoc) {
-								echo genLinetableMedoc($medoc['libMedoc'],$medoc['nbrBoites']);
+								echo genLinetableMedoc($medoc['libMedoc'],$medoc['nbrBoites'],$medoc['remis'],$medoc['idMedoc']);
 							}
 						?>
 					  </tbody>
 					  </table>
+						<input style="float: right;" type="submit" class="button is-primary" value="Valider la remise"/>
+						</form>
+						<a href="?action=deleteOrdo&ordonnance=<?= $idOrdo ?>" style="float: left;"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAg0lEQVR4nO2WwQmAMAxF/8mldAiXEhdtXCMi5GClijbpofgf5NCWJJ+kLQEIqWMGsAHQi4mdNUcKyc8imqNmb/fdiTTI+hMQUVZ3W5QCkJfQu3a3QCkAbAF4CcFnqL/+iL7SvwCxAGOF72S+ySNgDZiEFo+AwUQ8TcJ3liz5EYMQlNgB9dzfjdR/8lgAAAAASUVORK5CYII="></a>
 					<div class="control">
 				</div>
   			</form>

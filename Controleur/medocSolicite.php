@@ -21,7 +21,6 @@ $nbPage = ceil(sizeof($medoc)/5);//On arrondie a l'entier superieur 2.4 -> 3, c'
 if(!($page <= $nbPage)){
     $page = 1;
 }
-
 include_once 'Vue/header.html';
 include_once 'Vue/medocSolicite.php';
 include_once 'Vue/footer.html';

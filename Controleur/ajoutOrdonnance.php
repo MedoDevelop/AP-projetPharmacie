@@ -44,6 +44,8 @@ if(isset($_POST['valider'])){
 			}
 		}
 
+		echo('<p class="subtitle is-4" align="center" style="color : green"><b>L\'ordonnance a été enregistrée avec succès, pour voir les changements <a href="">cliquez ici</a></b></p>');
+
 	}
 }
 

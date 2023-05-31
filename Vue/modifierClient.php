@@ -76,6 +76,7 @@
                   echo('&nbsp;&nbsp;&nbsp;<a href="?action=supprimerClient" class="button is-danger">Supprimer</a>');
                 }
                 ?>
+          </div>
 				<div class="field">
 					<p id="message"></p>
 				</div>

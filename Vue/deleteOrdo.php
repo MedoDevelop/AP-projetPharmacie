@@ -8,7 +8,7 @@
       <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title">Suppression de la mutuelle</p>
+            <p class="modal-card-title">Suppression de l'ordonnance</p>
            <a href="?action=consultOrdo"><button class="delete" aria-label="close"></button></a>
           </header>
           <section class="modal-card-body">

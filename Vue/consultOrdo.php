@@ -1,9 +1,16 @@
 <?php
-    function genLineTableOrdonnance($idOrdo,$libPathologie,$idClient,$isActive){
+    function genLineTableOrdonnance($idOrdo,$libPathologie,$idClient){
         $client = sendGETAssoc("http://api.test/client/byid/$idClient");
         $cltNom = $client[0]['nom'];
         $cltPrenom = $client[0]['prenom'];
-        if($isActive == 1){
+        $medocs = sendGETAssoc("http://api.test/ordonnance/medocofordomonth/$idOrdo");
+        $allRemis = true;
+        foreach($medocs as $medoc){
+            if($medoc['remis'] == 0){
+                $allRemis = false;
+            }
+        }
+        if($allRemis){
             $res = "
 			<tr>
                 <td> $idOrdo </td>
@@ -61,10 +68,28 @@
     <tbody>
         <?php
             foreach ($lesOrdos as $ordo) {
-                echo genLineTableOrdonnance($ordo['idOrdo'],$ordo['libPathologie'],$ordo['idClient'],$ordo['active']);
+                echo genLineTableOrdonnance($ordo['idOrdo'],$ordo['libPathologie'],$ordo['idClient']);
             }
         ?>
     </tbody>
     </table>
     </center>
+
+     <div class="box">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Légende
+        <br/>
+        <br/>
+        <p>
+            <div class="button">
+            <div class="active" style="float:none;"></div>&nbsp;&nbsp;&nbsp;Tout les médicaments de l'ordonnance on été remis ce mois-ci.
+        </div>
+        </p>
+        <br/>
+        <p>
+            <div class="button">
+            <div class="nactive" style="float:none;"></div>&nbsp;&nbsp;&nbsp;Des médicaments de l'ordonnance n'ont pas été rendus.
+        </div>
+        </p>
+    </div>
+
 </div>

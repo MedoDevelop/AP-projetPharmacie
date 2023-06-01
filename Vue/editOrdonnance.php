@@ -89,7 +89,7 @@
 					<div class="field">
 					  <label class="label">Durer de renouvellement (en mois)</label>
 					  <div class="control">
-					    <input class="input" type="number" name="renouvellement" min="0" max="12" value="6" style="width:175px;margin-left:10px;" disabled>
+					    <input class="input" type="number" name="renouvellement" min="0" max="12" value="<?= $ordo[0]["duree"] ?>" style="width:175px;margin-left:10px;" disabled>
 					  </div>
 					</div>
 					<form action="index.php?action=valideMedoc" method="post">
